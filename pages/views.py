@@ -1,0 +1,115 @@
+import json
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.contrib import messages
+from django.db.models import Q
+from django.template.context_processors import request
+
+from .models import NigeriaMineralDeposit, GeoPoliticalRegion, Minerals
+
+from .forms import ContactUsForm
+
+# Create your views here.
+def home(request):
+    return render(request, 'home.html', {} )
+
+def about(request):
+    return render(request, 'about.html', {})
+
+def contact(request):
+    form = ContactUsForm()
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your messages uploaded successfully!')
+            return render(request, 'home.html', {'form': form})
+        else:
+            return render(request, 'contact.html', {'form': form})
+
+    else:
+        return render(request, 'contact.html', {'form': form})
+
+
+def mineral(request):
+    minerals = NigeriaMineralDeposit.objects.all()
+    return render(request, 'minerals/mineral.html', {'minerals': minerals})
+
+def mineral_detail(request, pk):
+    mineral = NigeriaMineralDeposit.objects.get(id=pk)
+    return render(request, 'minerals/mineral_detail.html', {'mineral': mineral})
+
+def minerals(request):
+    minerals = Minerals.objects.all()
+    return render(request, 'minerals/minerals.html', {'minerals': minerals})
+
+def mineral_description(request, pk):
+    mineral = Minerals.objects.get(id=pk)
+    states = NigeriaMineralDeposit.objects.filter(minerals__icontains=mineral)
+
+    return render(request, 'minerals/mineral_description.html', {'mineral': mineral, 'states': states})
+
+
+def search(request):
+    if request.method == 'POST':
+        s = request.POST['searched']
+        if s == '':
+            messages.error(request, f'Your search entry cannot be empty {s}!')
+            return render(request, 'minerals/search.html', {})
+        else:
+            searched = NigeriaMineralDeposit.objects.filter(Q(minerals__icontains=s) | Q(note__icontains=s) | Q(state__icontains=s))
+
+            if not searched:
+                messages.success(request, f'Sorry, "{s}" did not return any result!')
+                return render(request, 'minerals/search.html', {'s':s})
+        return render(request, 'minerals/search.html', {'searched': searched, 's': s})
+
+    else:
+
+        products = NigeriaMineralDeposit.objects.all()
+        return render(request, 'minerals/search.html', {'product': products})
+
+
+def ne(request):
+    foo =  'North-East'
+    region = GeoPoliticalRegion.objects.get(region=foo)
+    cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+
+def se(request):
+    foo =  'South-East'
+    region = GeoPoliticalRegion.objects.get(region=foo)
+    cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+
+def sw(request):
+    foo =  'South-West'
+    region = GeoPoliticalRegion.objects.get(region=foo)
+    cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+
+def mb(request):
+    foo =  'Middle-Belt'
+    region = GeoPoliticalRegion.objects.get(region=foo)
+    cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+
+def ss(request):
+    foo =  'South-South'
+    region = GeoPoliticalRegion.objects.get(region=foo)
+    cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+
+def nw(request):
+    foo =  'North-West'
+    region = GeoPoliticalRegion.objects.get(region=foo)
+    cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+

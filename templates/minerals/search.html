@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block link %}<link href="{% static 'css/base.css' %}" rel="stylesheet" />{% endblock %}
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-2">
+        <div class="container px-4 px-lg-5 my-4">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Search by Mineral</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Search for <span class="text-white">"{{s}}"</span> </p>
+            </div>
+        </div>
+    </header>
+<!-- Section-->
+        <section class="py-4">
+            <div class="container col-md-5">
+                <div class="card bg-transparent text-center">
+                  <div class="card-header bg-secondary text-white">
+                    <h4> <strong><i class="bi bi-search"></i> Search</strong></h4>
+                  </div>
+                  <div class="card-header border border-secondary rounded-bottom">
+                      <form method="POST" action="{% url 'search' %}">{% csrf_token %}
+                          <div class="mb-3">
+
+                              <input type="text" class="form-control"  placeholder='Search by Minerals or State' name="searched">
+                          </div>
+
+                              <button type="submit" class="btn btn-primary">
+                                  Search
+                              </button>
+                      </form>
+                  </div>
+                </div>
+
+
+            </div>
+        </section>
+         <section class="py-2">
+            <div class="container px-4 px-lg-5 mt-3">
+                <div class="container col-md-12 justify-content-center">
+                  {% if searched %}
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="fw-bolder col-md-2">
+                                    Mineral
+                                </div>
+                                <div class="fw-bolder col-md-5">
+                                    States Endowed
+                                </div>
+                                <div class="fw-bolder col-md-5">
+                                    Region
+                                </div>
+                            </div>
+
+
+                        </div>
+                          <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">
+                                <div class="row ">
+                                    <div class="col col-md-2 bg-transparent">
+                                        <strong>{{ s|capfirst }}</strong>
+                                    </div>
+                                    <div class="col col-md-5">
+                                     {% for mineral in searched %}
+                                        <a class="text-decoration-none fw-bold" href="{% url 'mineral_detail' mineral.pk %}">{{mineral.state}}</a>, &nbsp;
+                                       {% endfor %}
+                                    </div>
+                                  <div class="fw-bolder col-md-5">
+                                    {% for mineral in searched %}
+                                      {% ifchanged mineral.region %}
+                                            {{ mineral.region }},
+                                      {% endifchanged %}
+                                      {% endfor %}
+                                </div>
+
+                                </div>
+                            </li>
+
+
+                          </ul>
+                    </div>
+ {% endif %}
+
+                </div>
+            </div>
+        <br><br>
+    </section>
+
+<!-- FOOTER -->
+<hr>
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2025 SEASAM Mining & Exploration, Limited. &middot; Tel: +234 802 307 0801, +27 79 246 6952 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+
+    {% endblock %}
+

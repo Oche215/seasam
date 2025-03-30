@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-2">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">About Us</h1>
+                <p class="lead fw-normal text-white-50 mb-0">SEASAM MINING AND EXPLORATION LIMITED</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section -->
+    <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-4 row-cols-xl-4 justify-content-center">
+                  <h5>
+                      <img class="rounded" src="{% static 'image/about/logoSEASAM.jpg' %}" alt="">
+                      <span class="fs-6">Innovation, Collaboration, and Commitment to Sustainability</span><strong class="text-success">. . .<i class="bi bi-minecart-loaded"></i></strong></h5>
+                    <p><span class="lead fw-bold">SEASAM is a private Limited Liability Company</span>, established in Nigeria and licensed under law to
+                        operate in the solid mineral sector. With deep-rooted network presence across the African continent SEASAM is positioned for transparent, sustainable and responsible rear earth upstream processing.
+                        <br><br>
+                        <span class="fw-bold"> The story of SEASAM epitomes the desire for innovative and energetic drive towards prosperity and international
+                        prominence.</span><br><br> The hallmark of our ingenuity anchored on an collaborative skill with our foreign and technical partners in bridging the technological and innovative initiatives that are present in other parts of the world to improve upstream activities of the solid mineral sector.
+                    </p>
+                    <p class="justify-content"> Established in 2024, SEASAM is poised to advance the industry practice in Africa from an archaic artisanal drill to a highly mechanized
+                        and innovative system that guarantees the host communities, the local government and all stakeholders a good return on their investments.
+                        <br><br>
+                        While we commit to exploration using the best practices in innovations and
+                        sustainable solutions in green mining, highlighting its benefits for a more responsible and sustainable future
+                        for the mining industries, the host communities and the globe as a whole.
+
+                    </p>
+                    <p>
+                        Our mantra is: Through innovation, collaboration, and commitment to sustainability, we will transform the mining sector its practices to protect the environment, conserve resources, and support the well-being of communities.<br><br>
+                        By embracing these technologies and practices, the industry can ensure a prosperous and sustainable future for generations to come.
+                    </p>
+
+                </div>
+            </div>
+        <br><br>
+    </section>
+
+<!-- FOOTER -->
+<hr>
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2025 SEASAM Mining & Exploration, Limited. &middot; Tel: +234 802 307 0801, +27 79 246 6952 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+
+{% endblock %}

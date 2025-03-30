@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block link %}<link href="{% static 'css/base.css' %}" rel="stylesheet" />{% endblock %}
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-2">
+        <div class="container px-4 px-lg-5 my-4">
+            <div class="text-center text-white">
+                <h1 class="fw-light text-white">Mineral Brochure</h1>
+                <p class="lead">Short description and definition about minerals found globally.</p>
+                <p>
+                  <a href="#" class="btn btn-primary my-2"><i class="bi bi-house"></i> Home</a>
+                  <a href="#" class="btn btn-secondary my-2">Contact <i class="bi bi-person-lines-fill"></i></a>
+                </p>
+            </div>
+        </div>
+    </header>
+<!-- Section-->
+{{minerals}}
+
+<div class="album py-4 bg-transparent">
+    <div class="container col-md-10 justify-content-center">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for mineral in minerals %}
+        <div class="col">
+          <div class="card shadow-sm border border-rounded ">
+              <img src="{{ mineral.photo.url }}" alt="" class="">
+              <div class="card-body">
+              <p class="card-text">{{ mineral.name }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                      <a href="{% url 'mineral_description' mineral.id %}" type="button" class="btn btn-sm btn-outline-secondary">Description</a>
+                      <a href="{% url 'search' %}" type="button" class="btn btn-sm btn-outline-secondary">States</a>
+                  </div>
+                  <small class="text-muted">9 {{minerals|length}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- FOOTER -->
+<hr>
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2025 SEASAM Mining & Exploration, Limited. &middot; Tel: +234 802 307 0801, +27 79 246 6952 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+
+    {% endblock %}
+

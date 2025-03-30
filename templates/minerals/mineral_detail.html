@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-2">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Mineral Deposit in {{ mineral.state }}</h1>
+                <p class="lead fw-normal text-white-50 mb-0">SEASAM MINING AND EXPLORATION LIMITED</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section -->
+    <section class="py-3">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="container col-md-12 justify-content-center">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="fw-bolder col-md-12">
+                                    <h4><strong>{{ mineral.state }} Details</strong></h4>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <div class="card">
+                                    <div class="badge bg-danger text-white position-absolute" style="bottom: 2rem; right: 0.5rem">{{ mineral.state }}</div>
+                                    <img class="card-img" src="{{ mineral.image.url }}" alt="Card image">
+                                </div>
+                            </div>
+                            <div class="col col-md-8">
+                                <div class=" p-3 text-right">
+                                    <blockquote class="blockquote mb-0">
+                                      <p>{{ mineral.note }}</p>
+                                        <br><br>
+                                      <footer class="blockquote-footer">
+                                        <small class="text-muted">
+                                            <cite title="Source Title">{{ mineral.minerals }}</cite>
+                                        </small>
+                                      </footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                </div>
+                </div>
+            </div>
+    </section>
+
+<!-- FOOTER -->
+<hr>
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2025 SEASAM Mining & Exploration, Limited. &middot; Tel: +234 802 307 0801, +27 79 246 6952 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+
+{% endblock %}

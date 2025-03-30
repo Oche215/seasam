@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}<link href="{% static 'css/min_bg.css' %}" rel="stylesheet" />{% endblock %}
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-2">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Mineral Encyclopedia</h1>
+                <p class="lead fw-normal text-white-50 mb-0">SEASAM MINING AND EXPLORATION LIMITED</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section -->
+    <section class="py-3">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="container col-md-12 justify-content-center">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="fw-bolder col-md-12">
+                                    <h4><strong>Mineral: {{ mineral.name }}</strong></h4>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col col-md-4">
+                                <div class="card ">
+                                    <div class="badge bg-success text-white position-absolute" style="Top: 0.5rem; right: 0.5rem">{{ mineral.name }}</div>
+                                    <img class="card-img" src="{{ mineral.photo.url }}" alt="Card image">
+                                    <br>
+                                    <div class="container">
+                                         {% for state in states %}
+                                        <a class="text-decoration-none fw-bold" href="{% url 'mineral_detail' mineral.pk %}">{{state.state}}</a>, &nbsp;
+                                       {% endfor %}
+                                            <br><br>
+                                        <footer class="blockquote-footer ">
+
+                                             <span>Number of States endowed with {{ mineral.name}} :  {{ states|length }}</span>
+                                      </footer>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col col-md-8 ">
+                                <div class=" p-3 text-right ">
+                                    <blockquote class="blockquote mb-0 bg-transparent">
+                                      <p><small>{{ mineral.description }}</small></p>
+                                        <br>
+
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                </div>
+                </div>
+            </div>
+    </section>
+
+<!-- FOOTER -->
+<hr>
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2025 SEASAM Mining & Exploration, Limited. &middot; Tel: +234 802 307 0801, +27 79 246 6952 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+
+{% endblock %}
