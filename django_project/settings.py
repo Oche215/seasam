@@ -46,6 +46,7 @@ ALLOWED_HOSTS = ['seasam-production.up.railway.app', 'https://seasam-production.
 CSRF_TRUSTED_ORIGINS = ['https://seasam-production.up.railway.app']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
