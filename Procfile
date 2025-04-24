@@ -1,2 +1,2 @@
-web: gunicorn pages.wsgi --log-file
-web: python manage.py migrate && gunicorn pages.wsg
+web: gunicorn django_project.wsgi.py --log-file
+web: python manage.py migrate && gunicorn django_project.wsgi.py
