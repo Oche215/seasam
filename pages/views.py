@@ -73,12 +73,21 @@ def contact(request):
 
 
 def mineral(request):
-    minerals = NigeriaMineralDeposit.objects.all()
-    return render(request, 'minerals/mineral.html', {'minerals': minerals})
+    if request.user.is_authenticated:
+        minerals = NigeriaMineralDeposit.objects.all()
+        return render(request, 'minerals/mineral.html', {'minerals': minerals})
+    else:
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {})
 
 def mineral_detail(request, pk):
-    mineral = NigeriaMineralDeposit.objects.get(id=pk)
-    return render(request, 'minerals/mineral_detail.html', {'mineral': mineral})
+    if request.user.is_authenticated:
+
+        mineral = NigeriaMineralDeposit.objects.get(id=pk)
+        return render(request, 'minerals/mineral_detail.html', {'mineral': mineral})
+    else:
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {})
 
 def minerals(request):
     minerals = Minerals.objects.all()
