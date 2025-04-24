@@ -18,16 +18,17 @@
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">Logistics</a>
+          <a class="nav-link" href="{% url 'logistics' %}">Logistics</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">eContract</a>
+          <a class="nav-link" href="{% url 'contract' %}">eContract</a>
         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
-        </li>
+
          <li class="nav-item">
           <a class="nav-link" href="{% url 'minerals' %}">Mineral Brochure</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'map' %}">Interactive Map</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,7 +55,20 @@
           <li><a class="dropdown-item" href="{% url 'price' %}">API - Prices</a></li>
       </ul>
         </li>
+         <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="bi bi-person-circle"></i> {{ user.first_name }}</a>
+        </li>
       </ul>
+
+      {% if user.is_authenticated %}
+      <form method="post" action="{% url 'logout' %}"  style="display: inline;">
+        {% csrf_token %}
+        <button class="btn btn-outline-warning" type="submit">Logout</button>
+      </form>
+      {% else %}
+      <a class="btn btn-outline-primary" href="{% url 'login' %}">Login</a>
+      {% endif %}
+      &nbsp;&nbsp;
 
       <form method="POST" action="{% url 'search' %}" class="d-flex" role="search">{% csrf_token %}
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">

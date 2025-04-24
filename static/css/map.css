@@ -1,0 +1,71 @@
+body {
+    background-image: url("/static/assets/pattern.png");
+    background-repeat: repeat;
+    width: 100%;
+    /*background-color: #19232D;
+    color: #FAFAFA;*/
+    /*margin: 0px 25px 15px 25px;*/
+}
+
+/*
+      #mapsection {
+        width: 50%;
+        height: auto;
+        fill: #ccc;
+        stroke: #333;
+        stroke-width: 2;
+      }
+      */
+
+      #NGFC {
+        fill: green;
+        stroke: white;
+        color: #FAFAFA;
+
+      }
+
+      #Benin {
+        fill: #00baba;
+      }
+
+      #Nigeria {
+        fill: yellow;
+      }
+
+      #Zimbabwe {
+        fill: brown;
+      }
+
+      #Zambia {
+        fill: green;
+      }
+
+      #Somalia {
+        fill: darkseagreen;
+      }
+
+      #Mali {
+        fill: gray;
+      }
+/*
+      path {
+        fill: #1da1f2;
+      }
+      */
+
+      path:hover {
+        fill: #452421;
+        stroke: red;
+        stroke-width: 2px;
+        transition: fill 0.4s;
+
+      }
+
+
+      text {
+      font: italic 13px sans-serif;
+      font-weight: bold;
+      fill: white;
+      stroke: white;
+      }
+

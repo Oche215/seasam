@@ -1,0 +1,10 @@
+header {
+
+    background-image: url("/static/assets/office.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    /*background-color: #19232D;
+    color: #FAFAFA;
+    background-image: url("static/css/img/maxime-bg.jpg");
+    /*margin: 0px 25px 15px 25px;*/
+}

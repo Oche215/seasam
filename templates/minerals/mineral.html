@@ -4,8 +4,8 @@
 
 {% block content %}
     <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-2">
+    <header class="bg-dark py-3">
+        <div class="container px-4 px-lg-5 my-3">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Mineral Deposit in Nigeria</h1>
                 <p class="lead fw-normal text-white-50 mb-0">SEASAM MINING AND EXPLORATION LIMITED</p>
@@ -20,17 +20,14 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="fw-bolder col-md-2">
+                                <div class="fw-bolder col-md-3">
                                     State
                                 </div>
                                 <div class="fw-bolder col-md-2">
                                     Region
                                 </div>
-                                <div class="fw-bolder col-md-4">
+                                <div class="fw-bolder col-md-7">
                                     Minerals
-                                </div>
-                                <div class="fw-bolder col-md-4">
-                                    Notes
                                 </div>
                             </div>
 
@@ -39,17 +36,14 @@
                               {% for mineral in minerals %}
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col col-md-2">
+                                    <div class="col col-md-3">
                                         <a class="text-decoration-none fw-bold" href="{% url 'mineral_detail' mineral.pk %}">{{ mineral.state }}</a>
                                     </div>
                                     <div class="col col-md-2">
                                         {{mineral.region}}
                                     </div>
-                                    <div class="col col-md-4">
+                                    <div class="col col-md-7">
                                         {{mineral.minerals}}
-                                    </div>
-                                    <div class="col col-md-4">
-                                        {{mineral.note}}
                                     </div>
                                 </div>
                             </li>

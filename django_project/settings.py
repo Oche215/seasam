@@ -17,10 +17,15 @@ import django.contrib.staticfiles.storage
 import rest_framework.apps
 import whitenoise.middleware
 from django.conf import STATICFILES_STORAGE_ALIAS
-from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT, CSRF_TRUSTED_ORIGINS
+from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT, CSRF_TRUSTED_ORIGINS, LOGOUT_REDIRECT_URL, \
+    LOGIN_URL, LOGIN_REDIRECT_URL, EMAIL_BACKEND, EMAIL_HOST, EMAIL_USE_TLS, EMAIL_PORT, EMAIL_HOST_USER, \
+    EMAIL_HOST_PASSWORD, DEFAULT_FROM_EMAIL
 from dotenv import load_dotenv
 
+import accounts.apps
 import connect.apps
+import map.apps
+import notes.apps
 import pages.apps
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,8 +42,8 @@ SECRET_KEY = 'django-insecure-vh=fegc$9gz364pqdru#zrtdz@f6^&r+c+31$0n^%p4ul0+oa-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+ALLOWED_HOSTS = ['seasam-production.up.railway.app', 'https://seasam-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['seasam-production.up.railway.app', 'https://seasam-production.up.railway.app']
 
 
 # Application definition
@@ -56,6 +61,9 @@ INSTALLED_APPS = [
     'rest_framework.apps.RestFrameworkConfig',
     'pages.apps.PagesConfig',
     'connect.apps.ConnectConfig',
+    'map.apps.MapConfig',
+    'notes.apps.NotesConfig',
+    'accounts.apps.AccountsConfig',
 
 ]
 
@@ -152,7 +160,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'statifiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'media/'
@@ -164,3 +172,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGOUT_REDIRECT_URL = "/accounts/login/"
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'oche215@gmail.com'
+EMAIL_HOST_PASSWORD = 'nehwggsnnrhdyzxz'
+DEFAULT_FROM_EMAIL = 'SEASAM EXPLORATION <oche215@gmail.com>'
+
+

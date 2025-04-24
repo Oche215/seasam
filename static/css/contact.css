@@ -1,0 +1,19 @@
+header {
+    background-image: url("/static/assets/off4.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+
+}
+
+section {
+    background-color: #F8F8F8;
+}
+
+footer {
+    background-color: dark;
+    color: white;
+    width: 100%;
+
+}
+
+

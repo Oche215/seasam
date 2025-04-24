@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 {% load static %}
+{% block link %}<link href="{% static 'css/contact.css' %}" rel="stylesheet" />{% endblock %}
+
 
 {% block content %}
     <!-- Header-->
     <header class="bg-dark py-4">
-        <div class="container px-4 px-lg-5 my-2">
+        <div class="container px-4 px-lg-5 my-3">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Contact Us</h1>
                 <p class="lead fw-normal text-white-50 mb-0">SEASAM MINING AND EXPLORATION LIMITED</p>
@@ -16,10 +18,10 @@
     <section class="py-5">
             <div class="row justify-content-center ">
 
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                            <div class="card mb-3">
 
-                                <div class="badge bg-secondary text-white position-absolute" style="top: 0.9rem; right: 0.9rem"> Drop us a line!</div>
+                                <div class="badge bg-success text-white position-absolute" style="top: 0.9rem; right: 0.9rem"> Drop us a line!</div>
                                 <img class="card-img-top" src="{% static 'contact/contactus.JPG' %}" alt="Card image cap">
                                 <div class="card-body">
                                     <form method="POST" enctype="multipart/form-data">{% csrf_token %}
@@ -31,17 +33,13 @@
                                 </div>
                                 </div>
                                 </div>
-
-
                         </div>
 
-
-            </div>
     </section>
 
 <!-- FOOTER -->
 <hr>
-  <footer class="container">
+  <footer class="bg-dark py-2">
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>&copy; 2025 SEASAM Mining & Exploration, Limited. &middot; Tel: +234 802 307 0801, +27 79 246 6952 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>

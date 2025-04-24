@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Header-->
+    <header class="bg-dark py-3">
+        <div class="container px-4 px-lg-5 my-3">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Login</h1>
+                <p class="lead fw-normal text-white-50 mb-0">SEASAM MINING AND EXPLORATION LIMITED</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section -->
+
+ <section class="py-3">
+     <main class="container">
+         <div class="p-2 p-md-3 mb-4 rounded text-body bg-body-secondary row">
+             <form method="post">{% csrf_token %}
+                 {{ form.as_p }}
+                 <button type="submit">Login</button>
+             </form>
+         </div>
+     </main>
+ </section>
+
+
+<!-- FOOTER -->
+<hr>
+  <footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2025 SEASAM Mining & Exploration, Limited. &middot; Tel: +234 802 307 0801, +27 79 246 6952 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+
+{% endblock %}

@@ -11,6 +11,8 @@
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -49,7 +51,27 @@
           <div class="carousel-caption text-start">
             <h1>Gold Rush</h1>
             <p class="opacity-75">Maintain a constant supply of raw gold to you refinery!</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <p><a class="btn btn-lg btn-warning" href="#">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+         <img src="{% static 'carousel/gl.jpg' %}" class="d-block w-100" alt="bar1">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Mining Logistics Services</h1>
+            <p class="opacity-75">The SEASAM Advantage</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'logistics' %}">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+         <img src="{% static 'carousel/env.jpg' %}" class="d-block w-100" alt="bar1">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Environmental-friendly or "Green" Mining </h1>
+            <p class="opacity-75">Protecting biodiversity and ecosystems by promoting sustainable practices throughout the mining lifecycle.</p>
+            <p><a class="btn btn-lg btn-success" href="#">Learn more</a></p>
           </div>
         </div>
       </div>
@@ -81,21 +103,33 @@
     <div class="row">
 
       <div class="col-lg-4">
-        <img src="{% static 'image/kobby.jpg' %}" class="d-block bd-placeholder-img rounded-circle" width="140" height="140" alt="bar1">
-        <h2 class="fw-normal">Go for Gold</h2>
-        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        <img src="{% static 'image/hand.jpg' %}" class="d-block bd-placeholder-img rounded-circle" width="140" height="140" alt="bar1">
+        <h2 class="fw-normal">skills</h2>
+        <p style="text-align: justify">With such strong commodity prices and active investment in the rear earth industries, having the right skills in mining arena is a prerequisite at the core of our investment.
+
+          At SEASAM we recognise the importance of the having in place adequately skilled personal especially in the complexity of operating modern mining equipment and the demand of higher level of efficiency.
+          <br><br>
+          Therefore, it is pivotal for us to prioritize re-educating and improving the mining workforce from governance to artisans.
+</p>
+        <p><a class="btn btn-secondary" href="{% url 'about' %}">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4 justify">
+        <img src="{% static 'image/tyre.jpg' %}" class="d-block bd-placeholder-img rounded-circle" width="140" height="140" alt="bar1">
+        <h2 class="fw-normal">technology</h2>
+        <p style="text-align: justify">Our business operation is structured by technology innovations. For instance, there are more than 4,000 minerals on Earth. The amount of solar radiation that a particular mineral reflects,
+          transmits, and scatters due to its chemical composition is unique. Its own unique fingerprint and is called a spectral signature. <br><br>
+          A mineral’s spectral signature can be harnessed remotely, securely and efficiently to deduce the presence of minerals in a place with the
+          help of satellites and drone technology.</p>
+        <p><a class="btn btn-secondary" href="{% url 'about' %}">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <img src="{% static 'image/alex.jpg' %}" class="d-block bd-placeholder-img rounded-circle" width="140" height="140" alt="bar1">
-        <h2 class="fw-normal">Head for Gold</h2>
-        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img src="{% static 'image/marek.jpg' %}" class="d-block bd-placeholder-img rounded-circle" width="140" height="140" alt="bar1">
-        <h2 class="fw-normal">Desire Gold</h2>
-        <p>And lastly this, the third column of representative placeholder content.</p>
+        <img src="{% static 'image/hyseni.jpg' %}" class="d-block bd-placeholder-img rounded-circle" width="140" height="140" alt="bar1">
+        <h2 class="fw-normal">service</h2>
+        <p style="text-align: justify">SEASAM operates a service-oriented business model where our customer are in center of what we do. We provide a services to our clients or customers, rather than selling physical products.
+          By this we are focused on delivering intangible value, which has become increasingly our speciality. This is significant because the total value of services exceeds that of goods but not in cost.
+          <br><br>
+          Our services include, Due Diligence Operations, Logistics Services, Contracts and Brokering.
+        </p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
@@ -109,12 +143,19 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">Gold detector test. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
-        <p class="lead">Check for gold using a gold detector, the same way you’d find other metals with a metal detector. They use low frequency magnetic fields or pulsing magnetic fields to determine whether the metal beneath them is gold or not.
-              Because nothing’s touching your sample, this test won’t damage it at all..</p>
+        <h2 class="featurette-heading fw-normal lh-1">process automation - <span class="text-body-secondary">It’ll blow your mind.</span></h2>
+        <p class="lead">Mining operations like excavation, material handling, and site inspections are complex and labor-intensive.
+          The increasing demand for metals and minerals thus necessitates the deployment of additional machines and workers.
+          Advances in robotics and associated AI allow autonomous or remote mine operations. <br>
+          Moreover, process automation reduces the need for recruiting new
+          employees and eliminates human presence in hazardous environments, improving worker safety.</p>
       </div>
       <div class="col-md-5">
-        <img src="{% static 'image/hand.jpg' %}" class="d-block w-100 rounded" alt="bar1">
+        <div class="row">
+          <div class="col">
+            <img src="{% static 'image/albert-2.jpg' %}" class="d-block w-100 rounded" alt="bar1">
+          </div>
+        </div>
       </div>
     </div>
 
@@ -122,11 +163,16 @@
 
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">Trust. <span class="text-body-secondary">Your Trusted Gold Dealer.</span></h2>
-        <p class="lead">You trusted Gold Dealer from Africa. At Seasam, we pride ourselves on our extensive knowledge of gold trading. With years of experience in the industry, our team ensures you receive the best value for your precious metals..</p>
+        <h2 class="featurette-heading fw-normal lh-1">seasam - <span class="text-body-secondary">Efficiency and Speed:</span></h2>
+        <p class="lead">SEASAM logistics offers the process of making the most efficient and effective decisions regarding mining
+          equipment transport. It involves planning the most efficient routes and selecting the right vehicles for moving equipment from
+          mines to processing plants and destination markets.<br>
+          Logistics service providers can handle everything from warehousing and storage solutions to transportation management systems
+          (TMS) that optimize shipment route planning.
+        </p>
       </div>
       <div class="col-md-5 order-md-1">
-        <img src="{% static 'image/bars.jpg' %}" class="d-block w-100 rounded" alt="bar1">
+        <img src="{% static 'image/vanyi-truck.jpg' %}" class="d-block w-100 rounded" alt="bar1">
       </div>
     </div>
 
@@ -134,11 +180,16 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">Premium gold buying and selling services for investors. <span class="text-body-secondary">Checkmate.</span></h2>
-        <p class="lead">And yes, Premium gold buying and selling services for investors.</p>
+        <h2 class="featurette-heading fw-normal lh-1">digital transformation - <span class="text-body-secondary">use of remote sensing</span></h2>
+        <p class="lead">Remote observation on the planet’s surface with satellites, drone monitoring and AI data analytics is applicable during all stages of the mine site lifecycle. <br>
+          GIS/Remote Sensing are a potent means of supporting projects on prospecting mineral deposits as well as ongoing excavation sate to monitor the potential of such pit.
+          Projects Coordinator at EOS Data Analytics, to find out how satellite remote sensing and analytics are used to support decision-making during the mine lifecycle,
+          from exploration of mineral deposits to reclamation — environmental restoration of mined lands.
+
+          </p>
       </div>
       <div class="col-md-5">
-        <img src="{% static 'image/au0.jpg' %}" class="d-block w-100 rounded" alt="bar1">
+        <img src="{% static 'image/remote.jpg' %}" class="d-block w-100 rounded" alt="bar1">
       </div>
     </div>
 

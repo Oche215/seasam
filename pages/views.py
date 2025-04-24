@@ -1,12 +1,13 @@
 import json
 
+from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.contrib import messages
-from django.db.models import Q
-from django.template.context_processors import request
+from django.db.models import Q, Max
 
+from django_project.settings import EMAIL_HOST_USER, DEFAULT_FROM_EMAIL
 from .models import NigeriaMineralDeposit, GeoPoliticalRegion, Minerals
+from connect.models import Connect
 
 from .forms import ContactUsForm
 
@@ -15,7 +16,46 @@ def home(request):
     return render(request, 'home.html', {} )
 
 def about(request):
-    return render(request, 'about.html', {})
+    form = ContactUsForm()
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST, request.FILES)
+
+        address = request.POST.get('email')
+        subject = request.POST.get('name')
+        message = request.POST.get('message')
+        phone = request.POST.get('phone')
+        attachment = request.FILES.get('file')
+
+        if address and subject and message:
+            try:
+                send_mail(f'Inquiry from {subject}',f'From: {address}\nName: {subject} \nPhone: {phone} \nMessage: {message}', DEFAULT_FROM_EMAIL, ['exploration.seasam@outlook.com'], html_message=attachment)
+                messages.success(request, 'Email sent successfully')
+            except Exception as e:
+                messages.success(request, f'Error sending email {e}')
+        else:
+            messages.success(request, 'All fields are required to send us a note except for File')
+
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Your messages uploaded successfully!')
+            return render(request, 'home.html', {'form': form})
+        else:
+            return render(request, 'contact.html', {'form': form})
+
+    else:
+        return render(request, 'about.html', {'form': form})
+
+
+def log(request):
+    px  = Connect.objects.all().count()
+
+    price = Connect.objects.filter(id=px)
+    return render(request, 'logistics.html', {'price': price})
+
+def contract(request):
+    return render(request, 'econtract.html', {})
 
 def contact(request):
     form = ContactUsForm()
@@ -58,7 +98,7 @@ def search(request):
             messages.error(request, f'Your search entry cannot be empty {s}!')
             return render(request, 'minerals/search.html', {})
         else:
-            searched = NigeriaMineralDeposit.objects.filter(Q(minerals__icontains=s) | Q(note__icontains=s) | Q(state__icontains=s))
+            searched = NigeriaMineralDeposit.objects.filter(Q(minerals__icontains=s) | Q(note__icontains=s) | Q(state__icontains=s)).order_by('region')
 
             if not searched:
                 messages.success(request, f'Sorry, "{s}" did not return any result!')

@@ -7,7 +7,7 @@
 {% block content %}
     <!-- Header-->
     <header class="bg-dark py-2">
-        <div class="container px-4 px-lg-5 my-4">
+        <div class="container px-4 px-lg-5 my-3">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Search by Mineral</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Search for <span class="text-white">"{{s}}"</span> </p>
@@ -49,10 +49,10 @@
                                 <div class="fw-bolder col-md-2">
                                     Mineral
                                 </div>
-                                <div class="fw-bolder col-md-5">
+                                <div class="fw-bolder col-md-6">
                                     States Endowed
                                 </div>
-                                <div class="fw-bolder col-md-5">
+                                <div class="fw-bolder col-md-4">
                                     Region
                                 </div>
                             </div>
@@ -66,12 +66,12 @@
                                     <div class="col col-md-2 bg-transparent">
                                         <strong>{{ s|capfirst }}</strong>
                                     </div>
-                                    <div class="col col-md-5">
+                                    <div class="col col-md-6">
                                      {% for mineral in searched %}
                                         <a class="text-decoration-none fw-bold" href="{% url 'mineral_detail' mineral.pk %}">{{mineral.state}}</a>, &nbsp;
                                        {% endfor %}
                                     </div>
-                                  <div class="fw-bolder col-md-5">
+                                  <div class="fw-bolder col-md-4">
                                     {% for mineral in searched %}
                                       {% ifchanged mineral.region %}
                                             {{ mineral.region }},
