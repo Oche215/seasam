@@ -43,7 +43,7 @@ SECRET_KEY = 'django-insecure-vh=fegc$9gz364pqdru#zrtdz@f6^&r+c+31$0n^%p4ul0+oa-
 DEBUG = True
 
 ALLOWED_HOSTS = ['seasam-production.up.railway.app', 'https://seasam-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['seasam-production.up.railway.app', 'https://seasam-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://seasam-production.up.railway.app']
 
 
 # Application definition
