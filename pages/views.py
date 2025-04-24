@@ -78,7 +78,19 @@ def mineral(request):
         return render(request, 'minerals/mineral.html', {'minerals': minerals})
     else:
         messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
-        return render(request, 'contact.html', {})
+        form = ContactUsForm()
+        if request.method == 'POST':
+            form = ContactUsForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your messages uploaded successfully!')
+                return render(request, 'home.html', {'form': form})
+            else:
+                return render(request, 'contact.html', {'form': form})
+
+        else:
+            return render(request, 'contact.html', {'form': form})
+
 
 def mineral_detail(request, pk):
     if request.user.is_authenticated:
