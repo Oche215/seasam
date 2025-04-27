@@ -99,17 +99,28 @@ def mineral_detail(request, pk):
         return render(request, 'minerals/mineral_detail.html', {'mineral': mineral})
     else:
         messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
-        return render(request, 'contact.html', {})
+        form = ContactUsForm()
+        return render(request, 'contact.html', {'form': form})
 
 def minerals(request):
-    minerals = Minerals.objects.all().order_by("pk")
-    return render(request, 'minerals/minerals.html', {'minerals': minerals})
+    if request.user.is_authenticated:
+
+        minerals = Minerals.objects.all().order_by("pk")
+        return render(request, 'minerals/minerals.html', {'minerals': minerals})
+    else:
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        form = ContactUsForm()
+        return render(request, 'contact.html', {'form': form})
 
 def mineral_description(request, pk):
-    mineral = Minerals.objects.get(id=pk)
-    states = NigeriaMineralDeposit.objects.filter(minerals__icontains=mineral)
-
-    return render(request, 'minerals/mineral_description.html', {'mineral': mineral, 'states': states})
+    if request.user.is_authenticated:
+        mineral = Minerals.objects.get(id=pk)
+        states = NigeriaMineralDeposit.objects.filter(minerals__icontains=mineral)
+        return render(request, 'minerals/mineral_description.html', {'mineral': mineral, 'states': states})
+    else:
+        form = ContactUsForm()
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
 
 
 def search(request):
@@ -133,50 +144,95 @@ def search(request):
 
 
 def ne(request):
-    foo =  'North-East'
-    region = GeoPoliticalRegion.objects.get(region=foo)
-    cat = NigeriaMineralDeposit.objects.filter(region=region)
+    if request.user.is_authenticated:
 
-    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+        foo =  'North-East'
+        region = GeoPoliticalRegion.objects.get(region=foo)
+        cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+        return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+    else:
+        form = ContactUsForm()
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
 
 def se(request):
-    foo =  'South-East'
-    region = GeoPoliticalRegion.objects.get(region=foo)
-    cat = NigeriaMineralDeposit.objects.filter(region=region)
+    if request.user.is_authenticated:
 
-    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+        foo =  'South-East'
+        region = GeoPoliticalRegion.objects.get(region=foo)
+        cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+        return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+    else:
+        form = ContactUsForm()
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
 
 def sw(request):
-    foo =  'South-West'
-    region = GeoPoliticalRegion.objects.get(region=foo)
-    cat = NigeriaMineralDeposit.objects.filter(region=region)
+    if request.user.is_authenticated:
 
-    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+        foo =  'South-West'
+        region = GeoPoliticalRegion.objects.get(region=foo)
+        cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+        return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+    else:
+        form = ContactUsForm()
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
+
+
 
 def mb(request):
-    foo =  'Middle-Belt'
-    region = GeoPoliticalRegion.objects.get(region=foo)
-    cat = NigeriaMineralDeposit.objects.filter(region=region)
+    if request.user.is_authenticated:
 
-    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+        foo =  'Middle-Belt'
+        region = GeoPoliticalRegion.objects.get(region=foo)
+        cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+        return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+    else:
+        form = ContactUsForm()
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
 
 def ss(request):
-    foo =  'South-South'
-    region = GeoPoliticalRegion.objects.get(region=foo)
-    cat = NigeriaMineralDeposit.objects.filter(region=region)
+    if request.user.is_authenticated:
 
-    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+        foo =  'South-South'
+        region = GeoPoliticalRegion.objects.get(region=foo)
+        cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+        return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+    else:
+        form = ContactUsForm()
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
 
 def nw(request):
-    foo =  'North-West'
-    region = GeoPoliticalRegion.objects.get(region=foo)
-    cat = NigeriaMineralDeposit.objects.filter(region=region)
+    if request.user.is_authenticated:
 
-    return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+        foo =  'North-West'
+        region = GeoPoliticalRegion.objects.get(region=foo)
+        cat = NigeriaMineralDeposit.objects.filter(region=region)
+
+        return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
+    else:
+        form = ContactUsForm()
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
 
 
 def mineral_description_states(request, pk):
-    mineral = Minerals.objects.get(id=pk)
-    states = NigeriaMineralDeposit.objects.filter(minerals__icontains=mineral)
+    if request.user.is_authenticated:
 
-    return render(request, 'minerals/mineral_description_states.html', {'mineral': mineral, 'states': states})
+        mineral = Minerals.objects.get(id=pk)
+        states = NigeriaMineralDeposit.objects.filter(minerals__icontains=mineral)
+
+        return render(request, 'minerals/mineral_description_states.html', {'mineral': mineral, 'states': states})
+    else:
+        form = ContactUsForm()
+
+        messages.success(request, 'Your are not allowed to view this page contact the Site Admin!')
+        return render(request, 'contact.html', {'form': form})
