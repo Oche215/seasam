@@ -1,12 +1,13 @@
 from django.urls import path
 from .views import (home, about, contact, mineral, mineral_detail, search, minerals, mineral_description, mb,
-                    ss, sw, nw, ne, se, log, contract)
+                    ss, sw, nw, ne, se, log, contract, search1)
 
 urlpatterns = [
 
     path('mineral/', mineral, name='mineral'),
     path('mineral_detail/<int:pk>', mineral_detail, name='mineral_detail'),
     path('search/', search, name='search'),
+    path('search1/', search1, name='search1'),
     path('minerals/', minerals, name='minerals'),
     path('mineral_description/<int:pk>', mineral_description, name='mineral_description'),
 
