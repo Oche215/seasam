@@ -102,7 +102,7 @@ def mineral_detail(request, pk):
         return render(request, 'contact.html', {})
 
 def minerals(request):
-    minerals = Minerals.objects.all()
+    minerals = Minerals.objects.all().order_by(id)
     return render(request, 'minerals/minerals.html', {'minerals': minerals})
 
 def mineral_description(request, pk):

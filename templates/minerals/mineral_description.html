@@ -36,9 +36,6 @@
                                     <img class="card-img" src="{{ mineral.photo.url }}" alt="Card image">
                                     <br>
                                     <div class="container">
-                                         {% for state in states %}
-                                        <a class="text-decoration-none fw-bold" href="{% url 'mineral_detail' state.pk %}">{{state.state}}</a>, &nbsp;
-                                       {% endfor %}
                                             <br><br>
                                         <footer class="blockquote-footer ">
 
