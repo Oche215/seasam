@@ -174,15 +174,9 @@ def nw(request):
 
     return render(request, 'minerals/region.html', {'cat': cat, 'foo': foo})
 
-def search1(request, name):
-    if request.method == 'POST':
-        # s = request.POST['searched']
 
-        searched = NigeriaMineralDeposit.objects.filter(Q(minerals__icontains=name) | Q(note__icontains=name) | Q(state__icontains=name)).order_by('region')
+def mineral_description_states(request, pk):
+    mineral = Minerals.objects.get(id=pk)
+    states = NigeriaMineralDeposit.objects.filter(minerals__icontains=mineral)
 
-        if not searched:
-            messages.success(request, f'Sorry, "{name}" did not return any result!')
-            return render(request, 'minerals/search.html', {'s': name})
-        return render(request, 'minerals/search.html', {'searched': searched, 's': name})
-
-
+    return render(request, 'minerals/mineral_description_states.html', {'mineral': mineral, 'states': states})

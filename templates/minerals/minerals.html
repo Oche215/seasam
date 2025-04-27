@@ -32,7 +32,7 @@
               <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                       <a href="{% url 'mineral_description' mineral.id %}" type="button" class="btn btn-sm btn-outline-secondary">Description</a>
-                      <a href="{% url 'mineral_description' mineral.id %}" type="button" class="btn btn-sm btn-outline-secondary">States</a>
+                      <a href="{% url 'mineral_description_states' mineral.id %}" type="button" class="btn btn-sm btn-outline-secondary">States</a>
                   </div>
                   <small class="text-muted">{{ mineral.id }} of {{minerals|length}}</small>
               </div>
