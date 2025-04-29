@@ -45,6 +45,7 @@
           </ul>
         </li>
         {% if user.is_authenticated %}
+        {% if user.is_staff %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Tradings
@@ -56,6 +57,7 @@
           <li><a class="dropdown-item" href="{% url 'price' %}">API - Prices</a></li>
       </ul>
         </li>
+        {% endif %}
 
          <li class="nav-item">
           <a class="nav-link active warning" href="#"><i class="bi bi-person-circle"></i> {{ user.first_name }}</a>
