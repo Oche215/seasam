@@ -28,7 +28,7 @@ def about(request):
 
         if address and subject and message:
             try:
-                send_mail(f'Inquiry from {subject}',f'From: {address}\nName: {subject} \nPhone: {phone} \nMessage: {message}', DEFAULT_FROM_EMAIL, ['exploration.seasam@outlook.com'], html_message=attachment)
+                send_mail(f'Inquiry from {subject}',f'From: {address}\nName: {subject} \nPhone: {phone} \nMessage: {message}', DEFAULT_FROM_EMAIL, ['exploration.seasam@outlook.com', 'info@seasamexploration.com' ], html_message=attachment)
                 messages.success(request, 'Email sent successfully')
             except Exception as e:
                 messages.success(request, f'Error sending email {e}')
@@ -39,7 +39,7 @@ def about(request):
         if form.is_valid():
             form.save()
 
-            messages.success(request, 'Your messages uploaded successfully!')
+            # messages.success(request, 'Your messages uploaded successfully!')
             return render(request, 'home.html', {'form': form})
         else:
             return render(request, 'contact.html', {'form': form})
