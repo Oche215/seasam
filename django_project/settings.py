@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from urllib.request import localhost
 
 import django.contrib.staticfiles.storage
 import rest_framework.apps
@@ -42,8 +43,8 @@ SECRET_KEY = 'django-insecure-vh=fegc$9gz364pqdru#zrtdz@f6^&r+c+31$0n^%p4ul0+oa-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['seasam-production.up.railway.app', 'https://seasam-production.up.railway.app', 'seasamexploration.com', 'https://seasamexploration.com', 'https://www.seasamexploration.com']
-CSRF_TRUSTED_ORIGINS = ['https://seasam-production.up.railway.app', 'https://seasamexploration.com', 'https://www.seasamexploration.com']
+ALLOWED_HOSTS = ['seasam-production.up.railway.app', 'https://seasam-production.up.railway.app', 'seasamexploration.com', 'https://seasamexploration.com', 'https://www.seasamexploration.com', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://seasam-production.up.railway.app', 'https://seasamexploration.com', 'https://www.seasamexploration.com', 'https://localhost']
 
 
 
@@ -113,14 +114,14 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': os.environ['DB_PASSWORD_PG'],
-        'HOST': 'crossover.proxy.rlwy.net',
-        'PORT': '11067',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'railway',
+        # 'USER': 'postgres',
+        # 'PASSWORD': os.environ['DB_PASSWORD_PG'],
+        # 'HOST': 'crossover.proxy.rlwy.net',
+        # 'PORT': '11067',
     }
 }
 

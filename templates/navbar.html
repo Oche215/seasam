@@ -12,26 +12,26 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About</a>
+          <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logistics' %}">Logistics</a>
+          <a class="nav-link {% if request.path == '/logistics/' %}active{% endif %}" href="{% url 'logistics' %}">Logistics</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contract' %}">eContract</a>
+          <a class="nav-link {% if request.path == '/contract/' %}active{% endif %}" href="{% url 'contract' %}">eContract</a>
         </li>
 
          <li class="nav-item">
-          <a class="nav-link" href="{% url 'minerals' %}">Mineral Brochure</a>
+          <a class="nav-link {% if request.path == '/minerals/' %}active{% endif %}" href="{% url 'minerals' %}">Mineral Brochure</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'map' %}">Interactive Map</a>
+          <a class="nav-link {% if request.path == '/map/' %}active{% endif %}" href="{% url 'map' %}">Interactive Map</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link {% if request.path == '/mineral/' or request.path == '/ne/' or request.path == '/se/' or request.path == '/mb/' or request.path == '/ss/' or request.path == '/sw/' or request.path == '/nw/' %}active{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             R&D
           </a>
           <ul class="dropdown-menu">
