@@ -4,6 +4,8 @@ from rest_framework.views import APIView
 from .models import Connect
 from .serializers import PriceSerializer
 
+from django.shortcuts import render
+
 
 # Create your views here.
 class ConnectViewSet(APIView):
@@ -24,4 +26,8 @@ class ConnectViewSet(APIView):
 
 # router = routers.DefaultRouter()
 # router.register(r'price', ConnectViewSet)
+
+def lct(request):
+    return render(request, 'note/index.html', {})
+
 
